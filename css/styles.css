@@ -62,7 +62,7 @@ a:hover { color: var(--dorado); text-decoration: underline; }
 }
 .navbar nav { display: flex; gap: .25rem; flex-wrap: wrap; }
 .navbar nav a {
-  color: rgba(255,255,255,.78);
+  color: #ffffff;
   padding: .35rem .75rem;
   border-radius: 6px;
   font-family: var(--ff-cuerpo);
@@ -265,8 +265,8 @@ footer span { color: var(--verde-4); font-weight: 600; }
 
 /* ── RESPONSIVE ─────────────────────────────────────── */
 @media (max-width: 640px) {
-  .navbar { flex-direction: column; gap: .5rem; }
-  .navbar nav { justify-content: center; }
+  .navbar { flex-wrap: wrap; gap: .5rem; }
+  .navbar nav { justify-content: center; flex-wrap: wrap; gap: .15rem; }
   .hero { padding: 3.5rem 1.2rem 2.5rem; }
   .timeline::before { display: none; }
   .tl-item { flex-direction: column; }
