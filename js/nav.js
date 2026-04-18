@@ -9,8 +9,8 @@ const NAV_HTML = `
     <a href="justificacion.html">Justificación</a>
     <a href="plan-trabajo.html">Plan de Trabajo</a>
     <a href="sostenibilidad.html">Sostenibilidad</a>
-    <a href="#actividades">Actividades</a>
-    <a href="#bibliografia">Bibliografía</a>
+    <a href="actividades.html">Actividades</a>
+    <a href="bibliografia.html">Bibliografía</a>
   </nav>
 </div>
 `;
