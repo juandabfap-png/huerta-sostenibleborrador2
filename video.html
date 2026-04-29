@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🎬 Video del Proyecto | Huerta Medicinal</title>
+  <meta name="description" content="Video documental del proyecto Huerta Medicinal Casera para un Futuro Sostenible — Líderes Sostenibles, UNIMINUTO 2026." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* ===== RESET Y BASE ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --verde-oscuro:  #2d6a4f;
+      --verde-medio:   #40916c;
+      --verde-claro:   #74c69d;
+      --verde-suave:   #d8f3dc;
+      --verde-piel:    #b7e4c7;
+      --blanco:        #ffffff;
+      --gris-texto:    #374151;
+      --gris-suave:    #f9fafb;
+      --radio:         12px;
+      --sombra:        0 4px 20px rgba(45,106,79,.12);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--gris-suave);
+      color: var(--gris-texto);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ===== BARRA DE NAVEGACIÓN ===== */
+    nav {
+      background: var(--verde-oscuro);
+      padding: 0 1.5rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 12px rgba(0,0,0,.25);
+    }
+
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 0;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .nav-inner::-webkit-scrollbar { display: none; }
+
+    nav a {
+      color: rgba(255,255,255,.85);
+      text-decoration: none;
+      font-size: .82rem;
+      font-weight: 500;
+      padding: .9rem .75rem;
+      white-space: nowrap;
+      border-bottom: 3px solid transparent;
+      transition: color .2s, border-color .2s;
+      flex-shrink: 0;
+    }
+
+    nav a:hover { color: #fff; border-bottom-color: var(--verde-claro); }
+    nav a.activo  { color: #fff; border-bottom-color: var(--verde-claro); font-weight: 600; }
+
+    /* ===== CABECERA ===== */
+    header.hero {
+      background: linear-gradient(135deg, var(--verde-oscuro) 0%, var(--verde-medio) 100%);
+      color: #fff;
+      text-align: center;
+      padding: 3.5rem 1.5rem 2.5rem;
+    }
+
+    header.hero .etiqueta {
+      display: inline-block;
+      background: rgba(255,255,255,.18);
+      border: 1px solid rgba(255,255,255,.35);
+      border-radius: 99px;
+      font-size: .78rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: .35rem 1rem;
+      margin-bottom: 1rem;
+    }
+
+    header.hero h1 {
+      font-family: 'Merriweather', serif;
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      line-height: 1.25;
+      margin-bottom: .75rem;
+    }
+
+    header.hero p {
+      font-size: 1rem;
+      opacity: .88;
+      max-width: 620px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* ===== CONTENEDOR PRINCIPAL ===== */
+    main {
+      flex: 1;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2.5rem 1.25rem;
+      width: 100%;
+    }
+
+    /* ===== TARJETA DE VIDEO ===== */
+    .video-card {
+      background: var(--blanco);
+      border-radius: var(--radio);
+      box-shadow: var(--sombra);
+      overflow: hidden;
+      margin-bottom: 2rem;
+    }
+
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%; /* 16:9 */
+      background: #000;
+    }
+
+    .video-wrapper video,
+    .video-wrapper iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .video-info {
+      padding: 1.5rem 1.75rem;
+      border-top: 1px solid var(--verde-suave);
+    }
+
+    .video-info h2 {
+      font-family: 'Merriweather', serif;
+      color: var(--verde-oscuro);
+      font-size: 1.2rem;
+      margin-bottom: .5rem;
+    }
+
+    .video-info p {
+      font-size: .9rem;
+      color: #6b7280;
+      line-height: 1.6;
+    }
+
+    .video-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .6rem;
+      margin-top: 1rem;
+    }
+
+    .badge {
+      background: var(--verde-suave);
+      color: var(--verde-oscuro);
+      border-radius: 99px;
+      font-size: .76rem;
+      font-weight: 600;
+      padding: .3rem .85rem;
+    }
+
+    /* ===== TABS (si el usuario quiere alternar MP4 / YouTube) ===== */
+    .tabs {
+      display: flex;
+      gap: .5rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .tab-btn {
+      background: var(--blanco);
+      border: 2px solid var(--verde-claro);
+      color: var(--verde-oscuro);
+      border-radius: 99px;
+      font-size: .85rem;
+      font-weight: 600;
+      padding: .45rem 1.2rem;
+      cursor: pointer;
+      transition: background .2s, color .2s;
+    }
+
+    .tab-btn.activo, .tab-btn:hover {
+      background: var(--verde-oscuro);
+      color: #fff;
+      border-color: var(--verde-oscuro);
+    }
+
+    /* ===== SECCIÓN LIBRETO ===== */
+    .seccion {
+      background: var(--blanco);
+      border-radius: var(--radio);
+      box-shadow: var(--sombra);
+      padding: 1.75rem;
+      margin-bottom: 2rem;
+    }
+
+    .seccion h2 {
+      font-family: 'Merriweather', serif;
+      color: var(--verde-oscuro);
+      font-size: 1.15rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+
+    .seccion p, .seccion li {
+      font-size: .92rem;
+      line-height: 1.75;
+      color: #4b5563;
+    }
+
+    .seccion ul { padding-left: 1.25rem; }
+    .seccion li { margin-bottom: .4rem; }
+
+    /* ===== AVISO ===== */
+    .aviso {
+      background: #fffbeb;
+      border-left: 4px solid #f59e0b;
+      border-radius: 0 var(--radio) var(--radio) 0;
+      padding: 1rem 1.25rem;
+      margin-bottom: 2rem;
+      font-size: .88rem;
+      color: #92400e;
+      line-height: 1.6;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--verde-oscuro);
+      color: rgba(255,255,255,.8);
+      text-align: center;
+      font-size: .82rem;
+      padding: 1.25rem 1rem;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 600px) {
+      header.hero { padding: 2.5rem 1rem 2rem; }
+      .video-info { padding: 1.1rem 1.25rem; }
+      .seccion { padding: 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== NAVEGACIÓN ===== -->
+  <nav>
+    <div class="nav-inner">
+      <a href="./index.html">🌿 Inicio</a>
+      <a href="./comunidad.html">👨‍👩‍👧‍👦 Comunidad</a>
+      <a href="./problematicas.html">⚠️ Problemáticas</a>
+      <a href="./justificacion.html">📚 Justificación</a>
+      <a href="./plan-trabajo.html">📅 Plan de Trabajo</a>
+      <a href="./sostenibilidad.html">🌱 Sostenibilidad</a>
+      <a href="./actividades.html">📓 Actividades</a>
+      <a href="./bibliografia.html">📖 Bibliografía</a>
+      <a href="./video.html" class="activo">🎬 Video</a>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <header class="hero">
+    <div class="etiqueta">🎬 Evidencia Audiovisual</div>
+    <h1>Video del Proyecto</h1>
+    <p>Documentación audiovisual completa de la Huerta Medicinal Casera —<br>Líderes Sostenibles en Acción · UNIMINUTO 2026</p>
+  </header>
+
+  <!-- ===== CONTENIDO PRINCIPAL ===== -->
+  <main>
+
+    <!-- AVISO instruccional (quítalo después de subir el video) -->
+    <div class="aviso">
+      💡 <strong>Instrucción de configuración:</strong> Si subiste el video al repositorio como <code>video.mp4</code>,
+      el reproductor de abajo ya lo mostrará automáticamente. Si prefieres usar YouTube,
+      reemplaza el elemento <code>&lt;video&gt;</code> por el <code>&lt;iframe&gt;</code> de YouTube que aparece comentado en el código.
+      Borra este aviso cuando el video esté funcionando.
+    </div>
+
+    <!-- REPRODUCTOR DE VIDEO -->
+    <div class="video-card">
+      <div class="video-wrapper">
+
+        <!-- ✅ OPCIÓN A: VIDEO DIRECTO (MP4 subido al repo) -->
+        <!-- Cambia "video.mp4" por el nombre exacto de tu archivo si es diferente -->
+        <video
+          controls
+          preload="metadata"
+          poster=""
+          aria-label="Video del proyecto Huerta Medicinal Casera">
+          <source src="./video.mp4" type="video/mp4" />
+          Tu navegador no soporta la reproducción de video. Puedes
+          <a href="./video.mp4" download style="color:var(--verde-claro)">descargar el video aquí</a>.
+        </video>
+
+        <!-- ✅ OPCIÓN B: EMBED DE YOUTUBE (comenta el <video> de arriba y descomenta esto) -->
+        <!--
+        <iframe
+          src="https://www.youtube.com/embed/TU_ID_DE_VIDEO_AQUI"
+          title="Huerta Medicinal Casera para un Futuro Sostenible"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+        -->
+
+      </div>
+
+      <div class="video-info">
+        <h2>🌿 Huerta Medicinal Casera para un Futuro Sostenible</h2>
+        <p>
+          Documentación audiovisual completa del proceso de implementación de la huerta medicinal
+          en el patio de un hogar urbano en Bogotá, Colombia. El video muestra las seis sesiones
+          de trabajo, la construcción del sistema de autorriego con materiales reciclados,
+          la siembra de las plantas medicinales y los resultados del proyecto.
+        </p>
+        <div class="video-meta">
+          <span class="badge">📍 Bogotá, Colombia</span>
+          <span class="badge">🌱 6 Plantas Medicinales</span>
+          <span class="badge">👥 Familia Mejía Vilardy</span>
+          <span class="badge">🎓 UNIMINUTO Virtual 2026</span>
+          <span class="badge">♻️ Materiales Reciclados</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTENIDO DEL VIDEO -->
+    <div class="seccion">
+      <h2>📋 Contenido del Video</h2>
+      <ul>
+        <li><strong>Presentación del proyecto</strong> — Introducción, georreferenciación en Bogotá y contexto familiar.</li>
+        <li><strong>Problemáticas identificadas</strong> — Dependencia farmacéutica y pérdida de saberes medicinales ancestrales.</li>
+        <li><strong>Actividad 1</strong> — Diagnóstico participativo y registro de asistencia.</li>
+        <li><strong>Actividad 2</strong> — Taller de plantas medicinales y círculo de saberes.</li>
+        <li><strong>Actividades 3 y 4</strong> — Preparación del espacio y jornada de siembra colectiva con sistema de autorriego.</li>
+        <li><strong>Actividad 5</strong> — Cuidado, seguimiento y primeros usos medicinales.</li>
+        <li><strong>Actividad 6</strong> — Evaluación final, recetario medicinal y reflexión grupal.</li>
+        <li><strong>Objetivos de Desarrollo Sostenible</strong> — ODS 3, 4, 11, 12 y 15.</li>
+        <li><strong>Cierre</strong> — Resultados y mensaje final de la Familia Mejía Vilardy.</li>
+      </ul>
+    </div>
+
+    <!-- PLANTAS DEL PROYECTO -->
+    <div class="seccion">
+      <h2>🌿 Plantas Cultivadas en el Video</h2>
+      <ul>
+        <li>🌿 <strong>Menta</strong> (<em>Mentha piperita</em>) — Digestión, cefalea tensional</li>
+        <li>💚 <strong>Hierbabuena</strong> (<em>Mentha spicata</em>) — Cólicos, gases, uso bucal</li>
+        <li>🌼 <strong>Toronjil</strong> (<em>Melissa officinalis</em>) — Ansiedad, insomnio, estrés</li>
+        <li>☀️ <strong>Manzanilla</strong> (<em>Matricaria chamomilla</em>) — Inflamación, gastritis</li>
+        <li>🌸 <strong>Caléndula</strong> (<em>Calendula officinalis</em>) — Cicatrizante, antiséptica</li>
+        <li>🌵 <strong>Sábila</strong> (<em>Aloe barbadensis</em>) — Quemaduras, afecciones de piel</li>
+      </ul>
+    </div>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    🌿 Huerta Medicinal Casera · Proyecto Social de Formación: Líderes Sostenibles · UNIMINUTO Virtual 2026
+  </footer>
+
+</body>
+</html>
