@@ -11,11 +11,11 @@ const NAV_HTML = `
     <a href="sostenibilidad.html">Sostenibilidad</a>
     <a href="actividades.html">Actividades</a>
     <a href="bibliografia.html">Bibliografía</a>
+    <a href="video.html">🎬 Video</a>
   </nav>
 </div>
 `;
 document.getElementById('navbar-placeholder').innerHTML = NAV_HTML;
-
 // Marcar enlace activo
 const currentPage = window.location.pathname.split('/').pop() || 'index.html';
 document.querySelectorAll('.navbar nav a').forEach(a => {
